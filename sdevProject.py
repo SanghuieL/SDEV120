@@ -1,3 +1,6 @@
+#pip install openpyxl
+#pip install pandas
+#import openpyxl
 import pandas
 
 def dataEntry(checks): 
@@ -101,6 +104,7 @@ def printOutput(person, gross, deductions, net):
     print(person.firstName, person.lastName, person.employeeID, person.dependents)
     print(person.hourlyRate, person.hoursWorked)
     print(gross, deductions, net)
+    print("\n")
 
     return
 
@@ -121,7 +125,7 @@ def data(person, gross, deductions, net, checks):
 if __name__ == "__main__":
     payRate = {0:23, 1:7.25, 2:12.50, 3:15, 4:9.60, 5:19.40, 
                6:12.65, "0007":11.85, 8:16.60, 9:18, 10:15.35}
-    file = r'C:\Users\slee\Desktop\result.xlsx'
+    file = r'C:\Users\sangh\Desktop\school\SDEV 120\result.xlsx'
     counter = 0
     record = []
     
@@ -145,10 +149,11 @@ if __name__ == "__main__":
         
         counter += 1
         start = input("Is there another employee to create a report for? (y/n) ")
-    
+        #print(record)
+        
     df = pandas.DataFrame(record, columns=["First Name", "Last Name", "Employee ID", "Dependents",
-                                           "Hours Worked", "Input Valid Check", "Hourly Rate", "Valid ID Check"
-                                           "Gross Pay", "Deductions", "Net Pay"]).T
+                                           "Hours Worked", "Input Valid Check", "Hourly Rate", "Valid ID Check",
+                                           "Gross Pay", "Deductions", "Net Pay"])
     df.to_excel(excel_writer=file)
     print("End of program \n results saved at" + file)
     
